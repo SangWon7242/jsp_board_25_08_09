@@ -1,4 +1,4 @@
-package com.sbs.jsp.board.base.rq;
+package com.sbs.jsp.board.global.base.rq;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

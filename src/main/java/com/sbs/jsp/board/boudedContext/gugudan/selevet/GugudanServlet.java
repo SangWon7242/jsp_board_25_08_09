@@ -1,6 +1,6 @@
 package com.sbs.jsp.board.boudedContext.gugudan.selevet;
 
-import com.sbs.jsp.board.base.rq.Rq;
+import com.sbs.jsp.board.global.base.rq.Rq;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
