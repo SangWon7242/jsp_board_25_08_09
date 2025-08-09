@@ -22,5 +22,17 @@ public class GugudanServlet extends HttpServlet {
     for(int i = 1; i <= limit; i++) {
       rq.print("<div>%d * %d = %d</div>\n".formatted(dan, i, dan * i));
     }
+
+    rq.print("""
+             <div class="box-1"></div>
+             
+             <style>
+             .box-1 {
+               width: 200px;
+               height: 200px;
+               background-color: red;
+             }
+             </style>
+             """);
   }
 }
