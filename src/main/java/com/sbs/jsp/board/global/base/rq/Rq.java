@@ -1,5 +1,6 @@
 package com.sbs.jsp.board.global.base.rq;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -44,6 +45,21 @@ public class Rq {
   public void print(String str) {
     try {
       resp.getWriter().append(str);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void setAttr(String attrName, Object value) {
+    req.setAttribute(attrName, value);
+  }
+
+  public void view(String path) {
+    RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
+    // usr/article/list -> /jsp/usr/article/list.jsp
+
+    try {
+      requestDispatcher.forward(req, resp);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

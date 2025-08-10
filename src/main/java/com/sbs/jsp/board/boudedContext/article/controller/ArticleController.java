@@ -1,9 +1,32 @@
 package com.sbs.jsp.board.boudedContext.article.controller;
 
+import com.sbs.jsp.board.boudedContext.article.dto.Article;
 import com.sbs.jsp.board.global.base.rq.Rq;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class ArticleController {
+  private List<Article> articles;
+
+  public ArticleController() {
+    articles = new ArrayList<>();
+
+    makeTestData();
+  }
+
+  private void makeTestData() {
+    IntStream.rangeClosed(1, 5).forEach(i -> {
+      articles.add(new Article("제목 " + i, "내용 " + i));
+    });
+  }
+
+
   public void showList(Rq rq) {
-    rq.print("<h1>게시물 리스트</h1>");
+
+    rq.setAttr("articles", articles);
+
+    rq.view("usr/article/list");
   }
 }
