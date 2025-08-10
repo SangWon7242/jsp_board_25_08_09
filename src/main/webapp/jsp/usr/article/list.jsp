@@ -10,12 +10,24 @@
 <h1>게시물 리스트</h1>
 
 <div>
-  <ul>
-    <% for (Article article : articles) { %>
-      <li>
-        <span>id: <%= article.getId() %></span>
-        <span>title: <%= article.getTitle() %></span>
-      </li>
-    <% } %>
-  </ul>
+  <table border="1" style="border-collapse: collapse">
+    <colgroup>
+      <col width="50px">
+      <col width="200px">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (Article article : articles) { %>
+      <tr>
+        <td><%= article.getId() %></td>
+        <td><%= article.getTitle() %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
 </div>
