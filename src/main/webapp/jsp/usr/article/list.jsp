@@ -9,6 +9,8 @@
 
 <h1>게시물 리스트</h1>
 
+<div>게시물 개수 : ${articleCount}</div>
+
 <div>
   <table border="1" style="border-collapse: collapse">
     <colgroup>

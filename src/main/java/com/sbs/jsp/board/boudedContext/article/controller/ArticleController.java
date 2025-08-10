@@ -30,6 +30,7 @@ public class ArticleController {
     Collections.reverse(articles);
 
     rq.setAttr("articles", articles);
+    rq.setAttr("articleCount", articles.size());
 
     rq.view("usr/article/list");
   }
