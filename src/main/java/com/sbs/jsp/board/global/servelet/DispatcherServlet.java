@@ -22,14 +22,26 @@ public class DispatcherServlet extends HttpServlet {
     MemberController memberController = Container.memberController;
     ArticleController articleController = Container.articleController;
 
-    String url = req.getRequestURI();
-    // System.out.println(url);
-    // url path를 가져옴
-
-    switch (url) {
-      case "/usr/article/write" -> articleController.showWrite(rq);
-      case "/usr/article/list" -> articleController.showList(rq);
-      case "/usr/member/join" -> memberController.showJoin(rq);
+    switch (rq.getMethod()) {
+      case "GET":
+        switch (rq.getUri()) {
+          case "/usr/article/write" -> articleController.showWrite(rq);
+          case "/usr/article/list" -> articleController.showList(rq);
+          case "/usr/member/join" -> memberController.showJoin(rq);
+          default -> {}
+        }
+        break;
+      case "POST":
+        switch (rq.getUri()) {
+          case "/usr/article/write" -> articleController.doWrite(rq);
+          default -> {}
+        }
+        break;
     }
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    doGet(req, resp);
   }
 }

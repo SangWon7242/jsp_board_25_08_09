@@ -38,4 +38,14 @@ public class ArticleController {
   public void showWrite(Rq rq) {
     rq.view("usr/article/write");
   }
+
+  public void doWrite(Rq rq) {
+    String title = rq.getParam("title", "");
+    String content = rq.getParam("content", "");
+
+    Article article = new Article(title, content);
+    articles.add(article);
+
+    rq.print("게시물 작성 성공");
+  }
 }

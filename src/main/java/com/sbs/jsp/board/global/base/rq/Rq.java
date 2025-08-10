@@ -64,4 +64,13 @@ public class Rq {
       throw new RuntimeException(e);
     }
   }
+
+  public String getUri() {
+    return req.getRequestURI();
+  }
+
+  public String getMethod() {
+    // getMethod : HTTP 메서드를 가져온다.
+    return req.getMethod();
+  }
 }
