@@ -27,6 +27,7 @@ public class DispatcherServlet extends HttpServlet {
     // url path를 가져옴
 
     switch (url) {
+      case "/usr/article/write" -> articleController.showWrite(rq);
       case "/usr/article/list" -> articleController.showList(rq);
       case "/usr/member/join" -> memberController.showJoin(rq);
     }
