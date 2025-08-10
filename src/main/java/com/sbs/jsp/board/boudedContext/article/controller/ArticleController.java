@@ -4,11 +4,12 @@ import com.sbs.jsp.board.boudedContext.article.dto.Article;
 import com.sbs.jsp.board.global.base.rq.Rq;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class ArticleController {
-  private List<Article> articles;
+  public List<Article> articles;
 
   public ArticleController() {
     articles = new ArrayList<>();
@@ -24,6 +25,9 @@ public class ArticleController {
 
 
   public void showList(Rq rq) {
+    // 원본을 기반으로 한 복사본 생성
+    List<Article> articles = new ArrayList<>(this.articles);
+    Collections.reverse(articles);
 
     rq.setAttr("articles", articles);
 
