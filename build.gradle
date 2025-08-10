@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "war"
 }
 
 group = 'com.sbs.jsp.board'
@@ -15,6 +16,15 @@ dependencies {
 
     implementation("org.projectlombok:lombok:1.18.38")
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
+
+    // JSTL 의존성 추가
+    implementation("org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1")
+    implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2")
+    // JSTL 의존성 추가
+}
+
+tasks.war {
+    webAppDirectory.set(file("src/main/webapp"))
 }
 
 test {

@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.sbs.jsp.board.boudedContext.article.dto.Article" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 
-<%
-  List<Article> articles = (List<Article>) request.getAttribute("articles");
-%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <h1>게시물 리스트</h1>
 
@@ -24,12 +19,12 @@
       </tr>
     </thead>
     <tbody>
-      <% for (Article article : articles) { %>
-      <tr>
-        <td><%= article.getId() %></td>
-        <td><%= article.getTitle() %></td>
-      </tr>
-      <% } %>
+      <c:forEach var="article" items="${articles}">
+        <tr>
+          <td>${article.id}</td>
+          <td>${article.title}</td>
+        </tr>
+      </c:forEach>
     </tbody>
   </table>
 </div>
