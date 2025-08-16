@@ -73,4 +73,11 @@ public class Rq {
     // getMethod : HTTP 메서드를 가져온다.
     return req.getMethod();
   }
+
+  public String getActionPath() {
+    String[] bits = req.getRequestURI().split("/");
+    // /usr/article/list -> ["", "usr", "article", "list"]
+
+    return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+  }
 }

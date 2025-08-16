@@ -24,7 +24,7 @@ public class DispatcherServlet extends HttpServlet {
 
     switch (rq.getMethod()) {
       case "GET":
-        switch (rq.getUri()) {
+        switch (rq.getActionPath()) {
           case "/usr/article/write" -> articleController.showWrite(rq);
           case "/usr/article/list" -> articleController.showList(rq);
           case "/usr/member/join" -> memberController.showJoin(rq);
@@ -32,7 +32,7 @@ public class DispatcherServlet extends HttpServlet {
         }
         break;
       case "POST":
-        switch (rq.getUri()) {
+        switch (rq.getActionPath()) {
           case "/usr/article/write" -> articleController.doWrite(rq);
           default -> {}
         }
