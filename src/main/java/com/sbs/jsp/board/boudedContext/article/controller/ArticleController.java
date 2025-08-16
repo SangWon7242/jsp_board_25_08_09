@@ -1,33 +1,22 @@
 package com.sbs.jsp.board.boudedContext.article.controller;
 
 import com.sbs.jsp.board.boudedContext.article.dto.Article;
+import com.sbs.jsp.board.boudedContext.article.service.ArticleService;
 import com.sbs.jsp.board.global.base.rq.Rq;
+import com.sbs.jsp.board.global.container.Container;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ArticleController {
-  public List<Article> articles;
+  private final ArticleService articleService;
 
   public ArticleController() {
-    articles = new ArrayList<>();
-
-    makeTestData();
+    articleService = Container.articleService;
   }
-
-  private void makeTestData() {
-    IntStream.rangeClosed(1, 5).forEach(i -> {
-      articles.add(new Article("제목 " + i, "내용 " + i));
-    });
-  }
-
 
   public void showList(Rq rq) {
     // 원본을 기반으로 한 복사본 생성
-    List<Article> articles = new ArrayList<>(this.articles);
-    Collections.reverse(articles);
+    List<Article> articles = articleService.findByOrderByIdDesc();
 
     rq.setAttr("articles", articles);
     rq.setAttr("articleCount", articles.size());
@@ -43,9 +32,8 @@ public class ArticleController {
     String title = rq.getParam("title", "");
     String content = rq.getParam("content", "");
 
-    Article article = new Article(title, content);
-    articles.add(article);
+    long id = articleService.write(title, content);
 
-    rq.print("게시물 작성 성공");
+    rq.print("%d번 게시물 작성 성공".formatted(id));
   }
 }
