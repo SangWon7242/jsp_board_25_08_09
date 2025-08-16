@@ -22,7 +22,9 @@
       <c:forEach var="article" items="${articles}">
         <tr>
           <td>${article.id}</td>
-          <td>${article.title}</td>
+          <td>
+            <a href="/usr/article/detail?id=${article.id}">${article.title}</a>
+          </td>
         </tr>
       </c:forEach>
     </tbody>
