@@ -18,6 +18,11 @@ public class ArticleController {
     // 원본을 기반으로 한 복사본 생성
     List<Article> articles = articleService.findByOrderByIdDesc();
 
+    if(articles == null || articles.isEmpty()) {
+      rq.historyBack("게시물이 없습니다.");
+      return;
+    }
+
     rq.setAttr("articles", articles);
     rq.setAttr("articleCount", articles.size());
 
@@ -32,9 +37,19 @@ public class ArticleController {
     String title = rq.getParam("title", "");
     String content = rq.getParam("content", "");
 
+    if(title.trim().isEmpty()) {
+      rq.historyBack("제목을 입력해주세요.");
+      return;
+    }
+
+    if(content.trim().isEmpty()) {
+      rq.historyBack("내용을 입력해주세요.");
+      return;
+    }
+
     long id = articleService.write(title, content);
 
-    rq.print("%d번 게시물 작성 성공".formatted(id));
+    rq.replace("%d번 게시물이 작성되었습니다.".formatted(id), "/usr/article/detail/free/%d".formatted(id));
   }
 
   public void showDetail(Rq rq) {
@@ -42,24 +57,14 @@ public class ArticleController {
     // usr/article/detail?id=1 -> id=1
 
     if(id == 0) {
-      rq.print("""
-              <script>
-                alert("게시물을 찾을 수 없습니다.");
-              </script>
-              """);
-
+      rq.historyBack("게시물 번호를 입력해주세요.");
       return;
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.print("""
-              <script>
-                alert("%d번 게시물은 존재하지 않습니다.");
-              </script>
-              """.formatted(id));
-
+      rq.historyBack("%d번 게시물이 존재하지 않습니다.".formatted(id));
       return;
     }
 

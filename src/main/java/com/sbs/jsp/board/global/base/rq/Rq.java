@@ -50,6 +50,28 @@ public class Rq {
     }
   }
 
+  public void println(String str) {
+    print(str + "\n");
+  }
+
+  public void replace(String msg, String str) {
+    println("""
+            <script>
+              alert("%s");
+              location.replace("%s");
+            </script>
+            """.formatted(msg, str));
+  }
+
+  public void historyBack(String msg) {
+    println("""
+            <script>
+              alert("%s");
+              history.back();
+            </script>
+            """.formatted(msg));
+  }
+
   public void setAttr(String attrName, Object value) {
     req.setAttribute(attrName, value);
   }
