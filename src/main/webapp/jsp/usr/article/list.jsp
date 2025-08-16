@@ -2,6 +2,8 @@
 
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<%@ include file="../../common/head.jspf" %>
+
 <h1>게시물 리스트</h1>
 
 <div>게시물 개수 : ${articleCount}</div>
@@ -30,3 +32,5 @@
     </tbody>
   </table>
 </div>
+
+<%@ include file="../../common/foot.jspf" %>
