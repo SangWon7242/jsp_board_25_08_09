@@ -81,13 +81,24 @@ public class Rq {
     return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
   }
 
-  public long getLongParam(String paramName, long defaultValue) {
-    String value = req.getParameter(paramName);
-    if (value == null || value.isEmpty()) return defaultValue;
+  public long getLongPathValueByIndex(int index, int defaultValue) {
+    String value = getPathValueByIndex(index, null);
+
+    if(value == null) return defaultValue;
 
     try {
       return Long.parseLong(value);
     } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
+
+  private String getPathValueByIndex(int index, String defaultValue) {
+    String[] bits = req.getRequestURI().split("/");
+
+    try {
+      return bits[4 + index];
+    } catch (ArrayIndexOutOfBoundsException e) {
       return defaultValue;
     }
   }

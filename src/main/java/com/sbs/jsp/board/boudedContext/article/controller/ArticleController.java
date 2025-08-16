@@ -38,7 +38,7 @@ public class ArticleController {
   }
 
   public void showDetail(Rq rq) {
-    long id = rq.getLongParam("id", 0);
+    long id = rq.getLongPathValueByIndex(1, 0);
     // usr/article/detail?id=1 -> id=1
 
     if(id == 0) {

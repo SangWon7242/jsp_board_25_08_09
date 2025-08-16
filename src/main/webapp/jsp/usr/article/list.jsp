@@ -23,7 +23,7 @@
         <tr>
           <td>${article.id}</td>
           <td>
-            <a href="/usr/article/detail?id=${article.id}">${article.title}</a>
+            <a href="detail/free/${article.id}">${article.title}</a>
           </td>
         </tr>
       </c:forEach>
