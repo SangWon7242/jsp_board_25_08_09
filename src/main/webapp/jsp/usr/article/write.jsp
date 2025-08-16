@@ -23,24 +23,27 @@
   }
 </script>
 
-<h1>게시물 작성</h1>
-
-<div>
-  <form onsubmit="submitWriteForm(this); event.preventDefault();" method="POST">
-    <div>
-      <div>
-        <label for="title">제목</label>
+<section class="container mx-auto max-w-2xl px-4 mt-12">
+  <h1 class="text-2xl md:text-3xl font-bold mb-6 text-base-content text-center">게시물 작성</h1>
+  <form onsubmit="submitWriteForm(this); event.preventDefault();" method="POST" class="card bg-base-100 shadow-xl">
+    <div class="card-body space-y-4">
+      <div class="form-control">
+        <label for="title" class="label">
+          <span class="label-text">제목</span>
+        </label>
+        <input type="text" name="title" id="title" placeholder="제목을 입력해주세요." class="input input-bordered w-full" />
       </div>
-      <input type="text" name="title" id="title" placeholder="제목을 입력해주세요.">
-    </div>
-    <div>
-      <div>
-        <label for="content">내용</label>
+      <div class="form-control">
+        <label for="content" class="label">
+          <span class="label-text">내용</span>
+        </label>
+        <textarea name="content" id="content" placeholder="내용을 입력해주세요." class="textarea textarea-bordered w-full min-h-40"></textarea>
       </div>
-      <textarea name="content" id="content" placeholder="내용을 입력해주세요."></textarea>
+      <div class="form-control mt-2">
+        <button type="submit" class="btn btn-primary">작성</button>
+      </div>
     </div>
-    <button type="submit">작성</button>
   </form>
-</div>
+</section>
 
 <%@ include file="../../common/foot.jspf" %>
