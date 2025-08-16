@@ -2,8 +2,12 @@
 
   </main>
   </div>
-  <footer class="bottom-bar">
-    공통 푸터
+  <footer class="bottom-bar h-25 bg-[#292929]">
+    <div class="container mx-auto h-full flex items-center justify-center">
+      <div class="copyright text-white">
+        Copyright 2025. JSP BOARD. All rights reserved.
+      </div>
+    </div>
   </footer>
 </body>
 </html>

@@ -8,13 +8,49 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JSP 게시판</title>
+
+  <!-- Daisy UI 불러오기 -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
+  <!-- 테일윈드 css 불러오기 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
+  <style>
+    @font-face {
+      font-family: 'GmarketSansMedium';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    html > body {
+      font-family: 'GmarketSansMedium';
+    }
+  </style>
+
   <!-- 전체 사이트를 감싸는 용도 -->
   <div class="site-wrap">
     <!-- 공통 헤더   -->
-    <header class="top-bar">
-      공통 헤더
+    <header class="top-bar bg-base-100 shadow-sm h-20">
+      <div class="container mx-auto h-full flex items-center justify-between px-3">
+        <div class="logo-box">
+          <a href="#" class="logo font-bold text-2xl">
+            JSP 게시판
+          </a>
+        </div>
+        <nav class="menu-wrap">
+          <ul class="flex gap-x-10">
+            <li><a href="/usr/article/write" class="hover:text-red-500 hover:underline">게시물 작성</a></li>
+            <li><a href="/usr/article/list" class="hover:text-red-500 hover:underline">리스트</a></li>
+            <li><a href="#"class="hover:text-red-500 hover:underline">회원가입</a></li>
+            <li><a href="#" class="hover:text-red-500 hover:underline">로그인</a></li>
+          </ul>
+        </nav>
+        <button class="btn btn-square btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg>
+        </button>
+      </div>
     </header>
 
     <!-- 사이트 메인 컨텐츠 -->
