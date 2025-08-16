@@ -80,4 +80,15 @@ public class Rq {
 
     return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
   }
+
+  public long getLongParam(String paramName, long defaultValue) {
+    String value = req.getParameter(paramName);
+    if (value == null || value.isEmpty()) return defaultValue;
+
+    try {
+      return Long.parseLong(value);
+    } catch (NumberFormatException e) {
+      return defaultValue;
+    }
+  }
 }

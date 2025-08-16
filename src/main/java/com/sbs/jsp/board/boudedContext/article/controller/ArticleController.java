@@ -36,4 +36,34 @@ public class ArticleController {
 
     rq.print("%d번 게시물 작성 성공".formatted(id));
   }
+
+  public void showDetail(Rq rq) {
+    long id = rq.getLongParam("id", 0);
+    // usr/article/detail?id=1 -> id=1
+
+    if(id == 0) {
+      rq.print("""
+              <script>
+                alert("게시물을 찾을 수 없습니다.");
+              </script>
+              """);
+
+      return;
+    }
+
+    Article article = articleService.findById(id);
+
+    if(article == null) {
+      rq.print("""
+              <script>
+                alert("%d번 게시물은 존재하지 않습니다.");
+              </script>
+              """.formatted(id));
+
+      return;
+    }
+
+    rq.setAttr("article", article);
+    rq.view("usr/article/detail");
+  }
 }

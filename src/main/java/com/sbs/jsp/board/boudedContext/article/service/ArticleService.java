@@ -21,4 +21,8 @@ public class ArticleService {
   public long write(String title, String content) {
     return articleRepository.save(title, content);
   }
+
+  public Article findById(long id) {
+    return articleRepository.findById(id);
+  }
 }
