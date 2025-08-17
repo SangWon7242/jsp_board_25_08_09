@@ -14,20 +14,15 @@
 
   <!-- 테일윈드 css 불러오기 -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- 공통 css 불러오기 -->
+  <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+  <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
+
+  <!-- 공통 js 불러오기 -->
+  <script defer src="${contextPath}/resources/js/script.js"></script>
 </head>
 <body>
-  <style>
-    @font-face {
-      font-family: 'GmarketSansMedium';
-      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    html > body {
-      font-family: 'GmarketSansMedium';
-    }
-  </style>
 
   <!-- 전체 사이트를 감싸는 용도 -->
   <div class="site-wrap min-h-screen flex flex-col">
