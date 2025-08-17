@@ -43,4 +43,11 @@ public class ArticleRepository {
         .findFirst()
         .orElse(null);
   }
+
+  public void modify(long id, String title, String content) {
+    Article article = findById(id);
+
+    article.setTitle(title);
+    article.setContent(content);
+  }
 }
