@@ -9,6 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>${pageTitle != null ? pageTitle : "JSP 게시판"}</title>
 
+  <!-- jQuery 불러오기 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
   <!-- Daisy UI 불러오기 -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 

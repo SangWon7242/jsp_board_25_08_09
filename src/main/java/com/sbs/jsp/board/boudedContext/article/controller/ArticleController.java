@@ -18,7 +18,7 @@ public class ArticleController {
     // 원본을 기반으로 한 복사본 생성
     List<Article> articles = articleService.findByOrderByIdDesc();
 
-    if(articles == null || articles.isEmpty()) {
+    if (articles == null || articles.isEmpty()) {
       rq.historyBack("게시물이 없습니다.");
       return;
     }
@@ -37,12 +37,12 @@ public class ArticleController {
     String title = rq.getParam("title", "");
     String content = rq.getParam("content", "");
 
-    if(title.trim().isEmpty()) {
+    if (title.trim().isEmpty()) {
       rq.historyBack("제목을 입력해주세요.");
       return;
     }
 
-    if(content.trim().isEmpty()) {
+    if (content.trim().isEmpty()) {
       rq.historyBack("내용을 입력해주세요.");
       return;
     }
@@ -56,14 +56,14 @@ public class ArticleController {
     long id = rq.getLongPathValueByIndex(1, 0);
     // usr/article/detail?id=1 -> id=1
 
-    if(id == 0) {
+    if (id == 0) {
       rq.historyBack("게시물 번호를 입력해주세요.");
       return;
     }
 
     Article article = articleService.findById(id);
 
-    if(article == null) {
+    if (article == null) {
       rq.historyBack("%d번 게시물이 존재하지 않습니다.".formatted(id));
       return;
     }
@@ -75,14 +75,14 @@ public class ArticleController {
   public void showModify(Rq rq) {
     long id = rq.getLongPathValueByIndex(1, 0);
 
-    if(id == 0) {
+    if (id == 0) {
       rq.historyBack("올바른 요청이 아닙니다.");
       return;
     }
 
     Article article = articleService.findById(id);
 
-    if(article == null) {
+    if (article == null) {
       rq.historyBack("%d번 게시물이 존재하지 않습니다.".formatted(id));
       return;
     }
@@ -95,7 +95,7 @@ public class ArticleController {
   public void doModify(Rq rq) {
     long id = rq.getLongPathValueByIndex(1, 0);
 
-    if(id == 0) {
+    if (id == 0) {
       rq.historyBack("올바른 요청이 아닙니다.");
       return;
     }
@@ -103,12 +103,12 @@ public class ArticleController {
     String title = rq.getParam("title", "");
     String content = rq.getParam("content", "");
 
-    if(title.trim().isEmpty()) {
+    if (title.trim().isEmpty()) {
       rq.historyBack("제목을 입력해주세요.");
       return;
     }
 
-    if(content.trim().isEmpty()) {
+    if (content.trim().isEmpty()) {
       rq.historyBack("내용을 입력해주세요.");
       return;
     }
@@ -121,14 +121,14 @@ public class ArticleController {
   public void doDelete(Rq rq) {
     long id = rq.getLongPathValueByIndex(1, 0);
 
-    if(id == 0) {
+    if (id == 0) {
       rq.historyBack("올바른 요청이 아닙니다.");
       return;
     }
 
     Article article = articleService.findById(id);
 
-    if(article == null) {
+    if (article == null) {
       rq.historyBack("%d번 게시물이 존재하지 않습니다.".formatted(id));
       return;
     }
