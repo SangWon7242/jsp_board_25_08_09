@@ -27,9 +27,7 @@
       </div>
       <div class="card-actions justify-end mt-2">
         <a href="/usr/article/modify/free/${article.id}" class="btn btn-primary">수정</a>
-        <a onclick="if(confirm('정말 삭제하시겠습니까?')) $(this).next().submit();" class="btn btn-secondary">삭제</a>
-
-        <form hidden action="/usr/article/delete/free/${article.id}" method="POST"></form>
+        <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/${article.id}?_method=DELETE" class="btn btn-secondary">삭제</a>
 
         <a href="/usr/article/list" class="btn btn-outline">목록</a>
       </div>
