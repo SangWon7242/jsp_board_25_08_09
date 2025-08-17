@@ -50,4 +50,14 @@ public class ArticleRepository {
     article.setTitle(title);
     article.setContent(content);
   }
+
+  public void delete(long id) {
+    // removeIf : 삭제의 성공하면 true, 실패하면 false
+    articles.removeIf(article -> article.getId() == id);
+
+    /*
+    Article article = findById(id);
+    articles.remove(article);
+    */
+  }
 }
